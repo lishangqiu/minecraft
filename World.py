@@ -2,9 +2,6 @@ class World:  # TODO: create MyApp which includes 2d UIs
     def __init__(self):
         self.world_block_map = {}  # key: coordinate, value: chunk map
         self.entity_map = []
-        self.name_map = {0: 'bedrock', 1: 'stone', 2: 'grass'}
-        self.texture_atlas_path = './testing/test_texture2.png'  # TODO: texture_atlas
-        self.texture_atlas = loader.loadTexture(self.texture_atlas_path)
 
     def __assure_world_size(self, world_size):  # TODO: add in more chunks if world size not multiple of 16
 

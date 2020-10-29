@@ -2,16 +2,15 @@ from panda3d.core import *
 import time
 import array
 import World
+from config import *
 
 BREAKING_ANIMATION_PATH = []  # TODO: TODO(make and load breaking animation)'''
 TEXTURE_ID = []  # TODO: a dictionary of ID to NAME, ID is the index
 
-name_map = {1: 'bedrock', 2: 'stone', 3: 'grass'}
-texture_atlas_path = './testing/test_texture3.png'  # TODO: texture_atlas
-texture_atlas = loader.loadTexture(texture_atlas_path)
 cube_vert_count = 24  # 6 sides, 8 vertices per side
 cube_prim_vert_count = 36  # 6 sides, 6 index rows per side
 data_stride = 8  # 3 coordinates + 3 normal components + 2 UVs
+
 
 class Chunk(World.World):  # TODO: Should be a children of World
     def __init__(self, coordinates, initial_map={}):
@@ -24,7 +23,7 @@ class Chunk(World.World):  # TODO: Should be a children of World
         model_node = self.__create_model()
         self.model = render.attach_new_node(model_node)
         self.model.set_texture(texture_atlas)
-
+        #self.model.set_scale(0.25,0.25,0.25)
         self.__create_map()
 
     def __create_model(self):
@@ -41,8 +40,8 @@ class Chunk(World.World):  # TODO: Should be a children of World
 
     def __create_map(self):
         print('creating_map')
-        for (x,y,z), id_ in self.map.items():
-            self.add_cube((x*2, y*2, z*2), id_)
+        for (x, y, z), id_ in self.map.items():
+            self.add_cube((x * 2, y * 2, z * 2), id_)
 
     def __modify_model(self):
         model_geom = self.model.node().modify_geom(0)
@@ -129,8 +128,8 @@ class Chunk(World.World):  # TODO: Should be a children of World
                     pos[(i + direction * 2) % 3] = b
                     u, v = [pos[j] for j in range(3) if j != i]
                     u *= (-1. if i == 1 else 1.) * direction
-                    uv = (max(0.01, u-0.01) / 6. + u_offset,
-                          max((texture_row-1)/len(name_map)+0.01, (v / len(name_map) * texture_row)-0.01))
+                    uv = (max(0.01, u - 0.01) / 6. + u_offset,
+                          max((texture_row - 1) / len(name_map) + 0.01, (v / len(name_map) * texture_row) - 0.01))
 
                     values.extend(pos)
                     values.extend(normal)

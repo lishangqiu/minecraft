@@ -1,24 +1,40 @@
-from direct.showbase.ShowBase import ShowBase
-from panda3d.core import *
+from config import *
+from World import World
+from Player import Player
+from pandac.PandaModules import WindowProperties
+import sys
+
 loadPrcFileData("editor-startup", "show-frame-rate-meter #t")
 loadPrcFileData("editor-startup", "sync-video #f")
 
-
-class MyApp(ShowBase):
+props = WindowProperties()
+base.disableMouse()
+class MyApp:
     def __init__(self):
-        ShowBase.__init__(self)
-        #global render
-        render = self.render
-
         self.world = self.create_world()
+        showbase.accept('q', self.quit_game)
 
     def create_world(self):
-        from World import World
-
         world = World()
-        world.create_world(32)
+        world.create_world(8)
+        camera.setPos(0, 0, 10)
+        player = Player()
         return world
+
+    def mouse_relative_mode(self, on=True):
+        props.setCursorHidden(on)
+        props.setMouseMode(WindowProperties.M_relative)
+        showbase.win.requestProperties(props)
+        return
+
+    def quit_game(self):
+        #showbase.destroy()
+        #fagsagbhhf
+        base.enableMouse()
+
+
 app = MyApp()
-app.run()
+app.mouse_relative_mode()
+showbase.run()
 
 
