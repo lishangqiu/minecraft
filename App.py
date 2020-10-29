@@ -17,7 +17,6 @@ class MyApp:
     def create_world(self):
         world = World()
         world.create_world(8)
-        camera.setPos(0, 0, 10)
         player = Player()
         return world
 
@@ -28,9 +27,7 @@ class MyApp:
         return
 
     def quit_game(self):
-        #showbase.destroy()
-        #fagsagbhhf
-        base.enableMouse()
+        showbase.destroy()
 
 
 app = MyApp()
