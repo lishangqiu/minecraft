@@ -36,30 +36,30 @@ class Player(Entities):
 
         if is_down(left_button):
             direction = self.direction
-            direction[0] += 90
+            direction[0] -= 90
             added_pos = self.find_position(self.direction, PLAYER_WALK_SPEED)
             new_pos = [new_pos[0] + added_pos[0], new_pos[1] + added_pos[1],
                        new_pos[2] + added_pos[2]]
 
         if is_down(right_button):
             direction = self.direction
-            direction[0] -= 90
+            direction[0] += 90
             added_pos = self.find_position(self.direction, PLAYER_WALK_SPEED)
             new_pos = [new_pos[0] + added_pos[0], new_pos[1] + added_pos[1],
                        new_pos[2] + added_pos[2]]
 
         if is_down(backward_button):
             direction = self.direction
-            direction[0] += 180
+            direction[0] -= 180
             added_pos = self.find_position(self.direction, PLAYER_WALK_SPEED)
             new_pos = [new_pos[0] + added_pos[0], new_pos[1] + added_pos[1],
                        new_pos[2] + added_pos[2]]
 
         if is_down(forward_button):
             added_pos = self.find_position(self.direction, PLAYER_WALK_SPEED)
+            print(self.direction)
             new_pos = [new_pos[0] + added_pos[0], new_pos[1] + added_pos[1],
                        new_pos[2] + added_pos[2]]
-            print(new_pos)
 
 
         self.position = new_pos

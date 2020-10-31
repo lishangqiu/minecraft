@@ -12,7 +12,7 @@ class Entities:
     def find_position(self, direction_vector, speed):
         position = [
             ((globalClock.get_dt()*speed)*math.sin(math.radians(direction_vector[0]))),
-            ((globalClock.get_dt() * speed) * math.sin(math.radians(direction_vector[0]))),
+            ((globalClock.get_dt() * speed) * math.cos(math.radians(direction_vector[0]))),
             #((globalClock.get_dt() * speed) * math.sin(math.radians(direction_vector[0])))
             0
         ]

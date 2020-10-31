@@ -128,8 +128,8 @@ class Chunk(World.World):  # TODO: Should be a children of World
                     pos[(i + direction * 2) % 3] = b
                     u, v = [pos[j] for j in range(3) if j != i]
                     u *= (-1. if i == 1 else 1.) * direction
-                    uv = (max(0.01, u - 0.01) / 6. + u_offset,
-                          max((texture_row - 1) / len(name_map) + 0.01, (v / len(name_map) * texture_row) - 0.01))
+                    uv = (max(0., u) / 6. + u_offset,
+                          max((texture_row - 1) / len(name_map), (v / len(name_map) * texture_row)))
 
                     values.extend(pos)
                     values.extend(normal)
