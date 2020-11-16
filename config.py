@@ -10,6 +10,7 @@ globalClock = globalClock
 name_map = {1: 'bedrock', 2: 'stone', 3: 'grass'}
 texture_atlas_path = './testing/test_texture3.png'  # TODO: texture_atlas
 texture_atlas = loader.loadTexture(texture_atlas_path)
+WORLD_SCALE = 0.5
 
 # Player/Controls
 PLAYER_WALK_SPEED = 4
